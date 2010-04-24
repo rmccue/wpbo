@@ -1,0 +1,155 @@
+/*
+Theme Name: WordPress-Based PUG Organiser
+Theme URI: http://ryanmccue.info
+Description: A Pick Up Game organiser written using WordPress.
+Author: Ryan McCue
+Version: 1.0
+Template: twentyten
+*/
+
+html {
+	background: #eee;
+}
+body {
+	width: 860px;
+	margin: 10px auto;
+	background: #fff;
+	padding: 10px 40px;
+	font-family: Arial, sans-serif;
+}
+
+a {
+	color: #00f;
+	text-decoration: none;
+}
+	a:hover {
+		color: #f00;
+	}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	position: absolute;
+	left: -9000px;
+}
+
+/*
+LAYOUT: Two columns
+DESCRIPTION: Two-column fixed layout with one sidebar right of content
+*/
+
+#container {
+	float: left;
+	margin: 0 -240px 0 0;
+	width: 100%;
+}
+#content {
+	margin: 0 280px 0 20px;
+}
+#primary,
+#secondary {
+	float: right;
+	overflow: hidden;
+	width: 220px;
+}
+#secondary {
+	clear: right;
+}
+#footer {
+	clear: both;
+	width: 100%;
+}
+
+
+#site-title {
+	font: 22px Georgia;
+	text-align: center;
+	margin: 20px 0 30px;
+}
+	#site-title a {
+		color: #000;
+	}
+#site-description {
+	text-align: center;
+}
+
+#access .menu {
+	background: #eee;
+	margin: 20px 0 20px 20px;
+}
+	#access .menu ul {
+		list-style: none;
+		margin: 0;
+	}
+	#access .menu li {
+		position: relative;
+		padding: 0;
+		margin: 0;
+	}
+		#access .menu a {
+			padding: 5px 10px;
+		}
+.date sup {
+	font-size: 10px;
+}
+
+.post {
+	border: 1px solid #43CFFA;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+	.entry-title {
+		font: 20px Georgia;
+		margin: 0;
+		text-align: center;
+	}
+	.people {
+		float: left;
+		width: 10%;
+		background: #43CFFA;
+		margin-right: 2%;
+		border-radius: 8px;
+		-moz-border-radius: 8px;
+		-webkit-border-radius: 8px;
+		text-align: center;
+	}
+		.players, .reserves {
+			margin: 5px 10px;
+			color: #fff;
+			font-size: 18px;
+		}
+			.reserves {
+				font-size: 14px;
+			}
+			.players span, .reserves span {
+				font-size: 10px;
+				color: #eee;
+				display: block;
+			}
+				.people:hover .players span, .people:hover .reserves span {
+					color: #fff;
+				}
+		.people:hover {
+			background: #6EF1FA;
+		}
+	.post table {
+		float: left;
+		width: 88%;
+		border: 1px solid #6EF1FA;
+		border-collapse: collapse;
+	}
+		.post table th {
+			background: #6EF1FA;
+			font-weight: normal;
+			font-family: Georgia, serif;
+			font-size: 16px;
+			padding: 5px;
+		}
+		.post table td {
+			padding: 7px 12px;
+		}
+		.post table tr:nth-child(even) {
+			background: #DCF8FA;
+		}
+	.clearer {
+		clear: both;
+	}
