@@ -333,6 +333,9 @@ function wpbo_match_data($id) {
 		'server' => get_post_meta($id, 'wpbo-server', true),
 	);
 
+	if(empty($match['players']))
+		$match['players'] = array();
+
 	if($match['type'] == 'highlander')
 		$match['type_nice'] = 'Highlander (9v9)';
 	else
