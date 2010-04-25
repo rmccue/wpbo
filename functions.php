@@ -1,5 +1,13 @@
 <?php
 
+/*
+array(
+	'id' => 'rmccue',
+	'status' => 'confirmed',
+	'classes' => 'Soldier, Pyro',
+	'signed' => time()
+)
+*/
 // Fire this during init
 register_post_type('match', array(
 	'label' => __('Matches'),
