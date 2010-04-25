@@ -41,38 +41,34 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 */
 
 #container {
-	float: left;
-	margin: 0 -240px 0 0;
 	width: 100%;
 }
 #content {
-	margin: 0 280px 0 20px;
-}
-#primary,
-#secondary {
-	float: right;
-	overflow: hidden;
-	width: 220px;
-}
-#secondary {
-	clear: right;
 }
 #footer {
 	clear: both;
 	width: 100%;
 }
 
+#branding {
+	background: url("logo.png") no-repeat top;
+	padding-top: 150px;
+}
 
 #site-title {
 	font: 22px Georgia;
-	text-align: center;
 	margin: 20px 0 20px;
 }
 	#site-title a {
 		color: #000;
+		display: block;
+		/*width: 456px;
+		height: 169px;
+		text-indent: -9999px;*/
 	}
-#site-description {
-	text-align: center;
+#email-form {
+	float: right;
+	margin-top: -60px;
 }
 
 #access .menu {
@@ -129,19 +125,15 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 		padding-bottom: 5px;
 		border-bottom: 1px solid #eee;
 	}
-		.entry-meta .meta-prep,
-		.entry-meta .meta-sep {
-			display: none;
-		}
 		.entry-meta .entry-date {
 		}
 			.entry-meta a {
 				color: #333;
 			}
-		.entry-meta .author {
+		.entry-meta .type {
 			float: right;
 		}
-			.entry-meta .author a {
+			.entry-meta .type a {
 				color: #fff;
 				background: #D95B43;
 				padding: 5px 6px;
@@ -149,57 +141,72 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 				-moz-border-radius: 6px;
 				-webkit-border-radius: 6px;
 			}
-				.entry-meta .author a:hover {
+				.entry-meta .type a:hover {
 					background: #FA986E;
 				}
 	.people {
 		float: left;
 		width: 10%;
-		background: #43CFFA;
-		margin-right: 2%;
-		border-radius: 8px;
-		-moz-border-radius: 8px;
+		background: #53777A;
 		-webkit-border-radius: 8px;
+		-webkit-border-top-right-radius: 0;
+		-webkit-border-bottom-right-radius: 0;
+		-moz-border-radius: 8px;
+		-moz-border-radius-topright: 0;
+		-moz-border-radius-bottomright: 0;
+		border-radius: 8px;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
 		text-align: center;
 	}
-		.players, .reserves {
+		.people .confirmed, .reserves, .needed {
 			margin: 5px 10px;
 			color: #fff;
 			font-size: 18px;
 		}
-			.reserves {
+			.people .reserves {
 				font-size: 14px;
 			}
-			.players span, .reserves span {
+			.people .confirmed span, .reserves span, .needed span {
 				font-size: 10px;
 				color: #eee;
 				display: block;
 			}
-				.people:hover .players span, .people:hover .reserves span {
+				.people:hover .confirmed span, .people:hover .reserves span, .people:hover .needed span {
 					color: #fff;
 				}
-		.people:hover {
-			background: #6EF1FA;
-		}
-	.post table {
+	.match .players {
 		float: left;
-		width: 88%;
-		border: 1px solid #6EF1FA;
+		width: 90%;
 		border-collapse: collapse;
 	}
-		.post table th {
-			background: #6EF1FA;
+		.match .players th {
+			background: #53777A;
+			color: #fff;
 			font-weight: normal;
 			font-family: Georgia, serif;
 			font-size: 16px;
 			padding: 5px;
 		}
-		.post table td {
+		.match .players th:last-child {
+			-webkit-border-top-right-radius: 8px;
+			-moz-border-radius-topright: 8px;
+			border-top-right-radius: 8px;
+		}
+		.match .players td {
 			padding: 7px 12px;
 		}
-		.post table tr:nth-child(even) {
-			background: #DCF8FA;
+		.match .players tr.confirmed {
+			background: #88EE44;
+			background: rgba(136, 238, 68, 0.7);
 		}
+			.match .players tr.confirmed:nth-child(even) {
+				background: rgba(136, 238, 68, 0.9);
+			}
+	.match .server {
+		float: right;
+		margin-top: -18px;
+	}
 	.entry-utility {
 		font-size: 12px;
 		text-align: center;
@@ -210,19 +217,102 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 		clear: both;
 	}
 
-#primary {
-	border-left: 1px solid #aaa;
+/* Borrowed from WP's admin */
+.form-table {
+	border-collapse: collapse;
+	margin-top: 0.5em;
+	width: 100%;
+	margin-bottom: -8px;
+	clear: both;
 }
-	#primary ul {
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-	}
-		#primary li.widget-container {
-			margin: 10px 10px;
-		}
-			#primary .widget-title {
-				font: 18px Georgia;
-				margin: 0;
-				text-align: center;
-			}
+
+.form-table td {
+	margin-bottom: 9px;
+	padding: 8px 10px;
+	line-height: 20px;
+	font-size: 11px;
+}
+
+.form-table th,
+.form-wrap label {
+	font-weight: normal;
+	text-shadow: rgba(255,255,255,1) 0 1px 0;
+}
+
+.form-table th {
+	vertical-align: top;
+	text-align: left;
+	padding: 10px;
+	width: 200px;
+}
+
+.form-table th.th-full {
+	width: auto;
+}
+
+.form-table div.color-option {
+	display: block;
+	clear: both;
+	margin-top: 12px;
+}
+
+.form-table input.tog {
+	margin-top: 2px;
+	margin-right: 2px;
+	float: left;
+}
+
+.form-table table.color-palette {
+	vertical-align: bottom;
+	float: left;
+	margin: -12px 3px 11px;
+}
+
+.form-table .color-palette td {
+	border-width: 1px 1px 0;
+	border-style: solid solid none;
+	height: 10px;
+	line-height: 20px;
+	width: 10px;
+}
+
+input.large-text,
+textarea.large-text {
+	width: 99%;
+}
+
+.form-table input.regular-text,
+#adduser .form-field input {
+	width: 25em;
+}
+
+.form-table input.small-text {
+	width: 50px;
+}
+
+#profile-page .form-table textarea {
+	width: 500px;
+	margin-bottom: 6px;
+}
+
+#profile-page .form-table #rich_editing {
+	margin-right: 5px
+}
+
+.form-table .pre {
+	padding: 8px;
+	margin: 0;
+}
+
+.pre {
+	/* http://www.longren.org/2006/09/27/wrapping-text-inside-pre-tags/ */
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+table.form-table td .updated {
+	font-size: 13px;
+}

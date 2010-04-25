@@ -47,8 +47,10 @@
 				<?php } else { ?>
 					<div id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></div>
 				<?php } ?>
-				
-				<div id="site-description"><?php bloginfo( 'description' ); ?></div>
+
+				<div id="email-form">
+					<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=rac-pugs', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+						<p>Email: <input type="text" style="width:140px" name="email"/><input type="hidden" value="rac-pugs" name="uri"/><input type="hidden" name="loc" value="en_US"/> <input type="submit" value="Subscribe" /></p></form>
 			</div><!-- #branding -->
 
 			<div id="access">

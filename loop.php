@@ -33,52 +33,69 @@
 <?php endif; ?>
 
 <?php /* Start the Loop  */ ?>
-<?php while ( have_posts() ) : the_post(); ?>
+<?php while ( have_posts() ) : the_post(); $match = wpbo_match_data($post->ID); ?>
 
 <?php /* How to Display posts in the Gallery Category  */ ?>
-	<?php if ( in_category( 'Gallery' ) ) : ?>
+	<?php if ( is_post_type('match') ) : ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?> &mdash; <?php echo $match['date_nice'] ?></a></h2>
 
 			<div class="entry-meta">
-				<?php
-					printf( __( '<span class="meta-prep meta-prep-author">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a> <span class="meta-sep"> by </span> <span class="author vcard"><a class="url fn n" href="%4$s" title="%5$s">%6$s</a></span>', 'twentyten' ),
-						get_permalink(),
-						esc_attr( get_the_time() ),
-						get_the_date(),
-						get_author_posts_url( get_the_author_meta( 'ID' ) ),
-						sprintf( esc_attr__( 'View all posts by %s', 'twentyten' ), get_the_author() ),
-						get_the_author()
-					);
-				?>
+				<span class="meta-prep meta-prep-author"><?php _e( 'Posted on ', 'twentyten' ); ?></span>
+				<a href="<?php the_permalink(); ?>" title="<?php the_time(); ?>" rel="bookmark"><span class="entry-date"><?php echo get_the_date(); ?></span></a>
+				<span class="type"><a href="/matches/<?php echo $match['type'] ?>/"><?php echo $match['type_nice'] ?></a></span>
 			</div><!-- .entry-meta -->
 
 			<div class="entry-content">
-				<div class="gallery-thumb">
-					<a class="size-thumbnail" href="<?php the_permalink(); ?>"><?php
-					$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 999 ) );
-					$total_images = count( $images );
-					$image = array_shift( $images );
-					echo wp_get_attachment_image( $image->ID, 'thumbnail' );
-					?></a>
+				<div class="people">
+					<p class="confirmed"><?php echo $match['num_players'] ?><span> confirmed</span></p>
+				<?php
+					if($match['needed'] > 0) {
+				?>
+					<p class="needed"><?php echo $match['needed'] ?><span> needed</span></p>
+				<?php
+					} elseif($match['reserves'] > 0) {
+				?>
+					<p class="reserves"><?php echo $match['reserves'] ?><span> reserves</span></p>
+				<?php
+					}
+				?>
 				</div>
-				<p><em><?php printf( __( 'This gallery contains <a %1$s>%2$s photos</a>.', 'twentyten' ),
-						'href="' . get_permalink() . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark"',
-						$total_images
-					); ?></em></p>
-
-				<?php the_excerpt( '' ); ?>
+				<table class="players">
+					<thead>
+						<tr>
+							<th>Player</th>
+							<th>Status</th>
+							<th>Classes</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+						if($match['num_players'] < 1) {
+					?>
+						<tr>
+							<td colspan="3">No one yet!</td>
+						</tr>
+					<?php
+						}
+						else {
+							foreach($match['players'] as $player) {
+					?>
+						<tr class="<?php echo $player['status'] ?>">
+							<td><?php echo $player['name'] ?></td>
+							<td><?php echo ucfirst($player['status']) ?></td>
+							<td><?php echo $player['classes'] ?></td>
+						</tr>
+					<?php
+							}
+						}
+					?>
+				</table>
+				<div class="clearer"></div>
 			</div><!-- .entry-content -->
 
 			<div class="entry-utility">
-				<?php
-					$category_id = get_cat_ID( 'Gallery' );
-					$category_link = get_category_link( $category_id );
-				?>
-				<a href="<?php echo $category_link; ?>" title="<?php esc_attr_e( 'View posts in the Gallery category', 'twentyten' ); ?>"><?php _e( 'More Galleries', 'twentyten' ); ?></a>
-				<span class="meta-sep"> | </span>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'twentyten' ), __( '1 Comment', 'twentyten' ), __( '% Comments', 'twentyten' ) ); ?></span>
-				<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+				<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
 			</div><!-- #entry-utility -->
 		</div>
 
