@@ -112,8 +112,8 @@ $match = wpbo_match_data($post->ID);
 							else {
 								global $current_user;
 								get_currentuserinfo();
-								$name = get_the_author_meta('wpbo_tf2user');
-								$class = get_the_author_meta('wpbo_classes');
+								$name = get_the_author_meta('wpbo_tf2user', $current_user->ID);
+								$class = get_the_author_meta('wpbo_classes', $current_user->ID);
 							?>
 							<p>Signed in as <?php echo $current_user->display_name ?>. <a href="<?php echo wp_logout_url() ?>">Log out</a>.</p>
 							<p>Set your defaults on your <a href="<?php echo admin_url('profile.php'); ?>">profile</a>.</p>
