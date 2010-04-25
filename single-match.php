@@ -87,7 +87,7 @@ $match = wpbo_match_data($post->ID);
 							?>
 						</table>
 						<div class="clearer"></div>
-						<h3>Sign Up</h3>
+						<h3 id="sign-up">Sign Up</h3>
 						<form action="<?php echo admin_url( 'admin-post.php' );  ?>" method="POST">
 						<?php
 							if($match['needed'] > 0) {

@@ -95,7 +95,8 @@
 			</div><!-- .entry-content -->
 
 			<div class="entry-utility">
-				<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
+				<a href="<?php the_permalink(); ?>#sign-up">Sign Up!</a>
+				<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 			</div><!-- #entry-utility -->
 		</div>
 
