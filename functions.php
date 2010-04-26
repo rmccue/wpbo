@@ -109,18 +109,6 @@ function wpbo_post_callback( $post_id ) {
 	$serverpass = $_POST['wpbo-serverpass'];
 	$serverpass = htmlspecialchars($serverpass);
 	update_post_meta($post_id, 'wpbo-serverpass', $serverpass);
-
-	/*$people = $_POST['wpbo-people'];
-	foreach($people as $person_id => $status) {
-
-	}
-	$data = htmlspecialchars($data);
-
-	if(get_post_meta($post_id, 'wpbo-people') == "")
-		add_post_meta($post_id, 'wpbo-people', $data, true);
-
-	elseif($data != get_post_meta($post_id, 'wpbo-people', true))
-		update_post_meta($post_id, 'wpbo-people', $data);*/
 }
 add_action('save_post', 'wpbo_post_callback');
 
