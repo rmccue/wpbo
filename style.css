@@ -45,10 +45,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 }
 #content {
 }
-#footer {
-	clear: both;
-	width: 100%;
-}
 
 #branding {
 	background: url("logo.png") no-repeat top;
@@ -215,6 +211,23 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 	}
 	.clearer {
 		clear: both;
+	}
+#footer {
+	clear: both;
+	width: 100%;
+	padding: 10px 40px;
+	margin: 20px -40px -10px;
+	background: #542437;
+	color: #eee;
+}
+	#footer a {
+		color: #D95B43;
+	}
+	#colophon {
+		float: left;
+	}
+	#footer-links {
+		float: right;
 	}
 
 /* Borrowed from WP's admin */
