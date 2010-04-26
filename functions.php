@@ -349,7 +349,7 @@ function wpbo_match_data($id) {
 	$match = array(
 		'type' => get_post_meta($id, 'wpbo-type', true),
 		'date' => get_post_meta($id, 'wpbo-date', true),
-		'info' => get_post_meta($id, 'wpbo-info', true),
+		'info' => wpautop(get_post_meta($id, 'wpbo-info', true)),
 		'players' => get_post_meta($id, 'wpbo-players', true),
 		'server' => get_post_meta($id, 'wpbo-server', true),
 		'server_ip' => get_post_meta($id, 'wpbo-serverip', true),
