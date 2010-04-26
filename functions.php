@@ -312,7 +312,7 @@ function wpbo_add_player($post_id, $name, $classes, $user_id = null) {
 	$players = get_post_meta($post_id, 'wpbo-players', true);
 	$id = sanitize_key($name);
 
-	if(!empty($players[$id]))
+	if(!empty($players[$id]) && (!empty($players[$id]['user']) && $players[$id]['user'] !== $user_id))
 		return false;
 
 	$type = get_post_meta($post_id, 'wpbo-type', true);
