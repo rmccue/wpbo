@@ -142,7 +142,7 @@ $signed_up = false;
 								$name = get_the_author_meta('wpbo_tf2user', $current_user->ID);
 								$class = get_the_author_meta('wpbo_classes', $current_user->ID);
 							?>
-								<p>Signed in as <?php echo $current_user->display_name ?>. <a href="<?php echo wp_logout_url() ?>">Log out</a>. Set your defaults on your <a href="<?php echo admin_url('profile.php'); ?>">profile</a>.</p>
+								<p>Signed in as <?php echo $current_user->display_name ?>. <a href="<?php echo wp_logout_url() ?>">Log out</a>. Set your defaults on your <a href="<?php echo admin_url('profile.php'); ?>#wpbo-section">profile</a>.</p>
 							<?php
 								if($signed_up) {
 							?>

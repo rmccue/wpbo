@@ -425,7 +425,7 @@ add_action( 'show_user_profile', 'wpbo_profile_fields' );
 add_action( 'edit_user_profile', 'wpbo_profile_fields' );
 
 function wpbo_profile_fields( $user ) { ?>
-	<h3>Game Information</h3>
+	<h3 id="wpbo-section">Game Information</h3>
 	<table class="form-table">
 		<tr>
 			<th><label for="wpbo-tf2user">TF2 Username</label></th>
