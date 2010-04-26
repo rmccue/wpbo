@@ -203,7 +203,8 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 				background: rgba(136, 238, 68, 0.9);
 			}
 			.match .players tr.confirmed.player-is-me {
-				background: rgba(136, 238, 68, 1);
+				background: #542437;
+				color: #fff;
 			}
 	.match .server {
 		float: right;
