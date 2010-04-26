@@ -51,6 +51,7 @@
 				<div id="email-form">
 					<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=rac-pugs', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
 						<p>Email: <input type="text" style="width:140px" name="email"/><input type="hidden" value="rac-pugs" name="uri"/><input type="hidden" name="loc" value="en_US"/> <input type="submit" value="Subscribe" /></p></form>
+				</div>
 			</div><!-- #branding -->
 
 			<div id="access">
