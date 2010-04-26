@@ -146,7 +146,7 @@ function wpbo_matchinfo_box( $object, $box ) {
 	<table class="form-table">
 		<tr valign="top">
 			<th scope="row"><label for="wpbo-info">Information</label>
-			<td><textarea name="wpbo-info" id="wpbo-info" style="height:4em;margin:0;width:98%;" cols="40" rows="1"><?php echo $info ?></textarea>
+			<td><textarea name="wpbo-info" id="wpbo-info" style="height:10em;margin:0;width:98%;" cols="40" rows="1"><?php echo $info ?></textarea>
 				<p>Place any information relevant to the players here. For example, map choices for this match or expected times.</p></td>
 		</tr>
 		<tr valign="top">
