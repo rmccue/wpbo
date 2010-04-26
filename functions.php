@@ -259,7 +259,7 @@ function wpbo_form_callback_add() {
 	if(is_user_logged_in())
 		$uid = wp_get_current_user()->ID;
 
-	wpbo_add_player($post_id, $name, $class, $uid);
+	$result = wpbo_add_player($post_id, $name, $class, $uid);
 
 	wp_redirect(get_permalink($post_id));
 }
@@ -292,6 +292,10 @@ add_action('wp_ajax_wpbo_remove', 'wpbo_ajax_callback_remove');
 
 function wpbo_add_player($post_id, $name, $classes, $user_id = null) {
 	$players = get_post_meta($post_id, 'wpbo-players', true);
+	$id = sanitize_key($name);
+
+	if(!empty($players[$id]))
+		return false;
 
 	$type = get_post_meta($post_id, 'wpbo-type', true);
 	if($type === 'highlander')
@@ -304,7 +308,6 @@ function wpbo_add_player($post_id, $name, $classes, $user_id = null) {
 	else
 		$status = 'confirmed';
 
-	$id = sanitize_key($name);
 	$players[$id] = array(
 		'name' => $name,
 		'classes' => $classes,
