@@ -87,16 +87,17 @@ $match = wpbo_match_data($post->ID);
 							?>
 						</table>
 						<div class="clearer"></div>
-						<h3 id="sign-up">Sign Up</h3>
-						<form action="<?php echo admin_url( 'admin-post.php' );  ?>" method="POST">
+						<div id="sign-up">
+							<h3>Sign Up</h3>
+							<form action="<?php echo admin_url( 'admin-post.php' );  ?>" method="POST">
 						<?php
 							if($match['needed'] > 0) {
 						?>
-							<p>This match still needs <?php echo $match['needed'] ?> players. First in, best dressed!</p>
+								<p>This match still needs <?php echo $match['needed'] ?> players. First in, best dressed!</p>
 						<?php
 							} else {
 						?>
-							<p>This match is full. You can still sign up as a reserve though!</p>
+								<p>This match is full. You can still sign up as a reserve though!</p>
 						<?php
 							}
 						?>
@@ -105,8 +106,8 @@ $match = wpbo_match_data($post->ID);
 							$class = '';
 							if(!is_user_logged_in()) {
 							?>
-							<p>Are you a regular? <a href="<?php echo wp_login_url() ?>">Sign in</a> to pre-fill this form, or
-							<a href="<?php echo site_url('wp-login.php?action=register', 'login') ?>">create an account</a>.</p>
+								<p>Are you a regular? <a href="<?php echo wp_login_url() ?>">Sign in</a> to pre-fill this form, or
+								<a href="<?php echo site_url('wp-login.php?action=register', 'login') ?>">create an account</a>.</p>
 							<?php
 							}
 							else {
@@ -115,28 +116,28 @@ $match = wpbo_match_data($post->ID);
 								$name = get_the_author_meta('wpbo_tf2user', $current_user->ID);
 								$class = get_the_author_meta('wpbo_classes', $current_user->ID);
 							?>
-							<p>Signed in as <?php echo $current_user->display_name ?>. <a href="<?php echo wp_logout_url() ?>">Log out</a>.</p>
-							<p>Set your defaults on your <a href="<?php echo admin_url('profile.php'); ?>">profile</a>.</p>
+								<p>Signed in as <?php echo $current_user->display_name ?>. <a href="<?php echo wp_logout_url() ?>">Log out</a>. Set your defaults on your <a href="<?php echo admin_url('profile.php'); ?>">profile</a>.</p>
 							<?php
 							}
 							?>
-							<table class="form-table">
-								<tr>
-									<th scope="row"><label for="wpbo-name">Name</label></th>
-									<td><input type="text" name="wpbo-name" id="wpbo-name" value="<?php echo $name ?>" />
-								</tr>
-								<tr>
-									<th scope="row"><label for="wpbo-class">Class</label></th>
-									<td><input type="text" name="wpbo-class" id="wpbo-class" value="<?php echo $class ?>" />
-								</tr>
-							</table>
-							<p class="submit">
-								<input type="submit" value="Sign Me Up" />
-							</p>
-							<input type="hidden" name="wpbo-nonce" value="<?php echo wp_create_nonce( 'wpbo-add-form' ); ?>" />
-							<input type="hidden" name="wpbo-id" value="<?php the_ID(); ?>" />
-							<input type="hidden" name="action" value="wpbo_add" />
-						</form>
+								<table class="form-table">
+									<tr>
+										<th scope="row"><label for="wpbo-name">Name</label></th>
+										<td><input type="text" name="wpbo-name" id="wpbo-name" value="<?php echo $name ?>" />
+									</tr>
+									<tr>
+										<th scope="row"><label for="wpbo-class">Class</label></th>
+										<td><input type="text" name="wpbo-class" id="wpbo-class" value="<?php echo $class ?>" />
+									</tr>
+								</table>
+								<p class="submit">
+									<input type="submit" value="Sign Me Up" />
+								</p>
+								<input type="hidden" name="wpbo-nonce" value="<?php echo wp_create_nonce( 'wpbo-add-form' ); ?>" />
+								<input type="hidden" name="wpbo-id" value="<?php the_ID(); ?>" />
+								<input type="hidden" name="action" value="wpbo_add" />
+							</form>
+						</div><!-- #sign-up -->
 						<div class="clearer"></div>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->

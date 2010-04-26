@@ -209,6 +209,23 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 		border-top: 1px solid #eee;
 		padding-top: 6px;
 	}
+	#sign-up {
+		background: #C02942;
+		color: #ddd;
+		margin: 10px auto;
+		padding: 5px 50px;
+		width: 600px;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		border-radius: 12px;
+	}
+		#sign-up a {
+			color: #ECD078;
+			text-shadow: 1px 1px 0 #555;
+		}
+			#sign-up a:hover {
+				text-decoration: underline;
+			}
 	.clearer {
 		clear: both;
 	}
@@ -288,7 +305,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 .form-table th,
 .form-wrap label {
 	font-weight: normal;
-	text-shadow: rgba(255,255,255,1) 0 1px 0;
+	text-shadow: 0 1px 0 #444444;
 }
 
 .form-table th {
