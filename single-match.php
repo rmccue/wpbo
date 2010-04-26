@@ -135,6 +135,7 @@ $signed_up = false;
 							?>
 								<p>Are you a regular? <a href="<?php echo wp_login_url() ?>">Sign in</a> to pre-fill this form, or
 								<a href="<?php echo site_url('wp-login.php?action=register', 'login') ?>">create an account</a>.</p>
+								<p>Note: You can only edit your entry if you are logged in.</p>
 							<?php
 							}
 							else {
