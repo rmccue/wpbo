@@ -30,12 +30,14 @@
 
 		</div><!-- #colophon -->
 
-		<div id="footer-links">
-			<h3>Links</h3>
-			<ul>
-				<li><a href="http://www.reddit.com/r/tf2au">TF2 Australia Reddit</a></li>
-				<li><a href="http://www.reddit.com/r/rac">Reddit Australia Competitive</a></li>
-			</ul>
+		<div class="footer-links">
+			<h3><a href="http://www.reddit.com/r/rac">/r/rac</a></h3>
+			<script src="http://www.reddit.com/r/rac/hot/.embed?limit=5&t=all&style=off" type="text/javascript"></script>
+		</div>
+
+		<div class="footer-links">
+			<h3><a href="http://www.reddit.com/r/tf2au">/r/tf2au</a></h3>
+			<script src="http://www.reddit.com/r/tf2au/hot/.embed?limit=5&t=all&style=off" type="text/javascript"></script>
 		</div>
 
 		<div class="clearer"></div>

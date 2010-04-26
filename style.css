@@ -243,9 +243,54 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 	#colophon {
 		float: left;
 	}
-	#footer-links {
+	.footer-links {
 		float: right;
+		margin-left: 20px;
+		width: 220px;
 	}
+	#footer h3 {
+		margin: 0;
+		padding-bottom: 7px;
+		color: #fff;
+	}
+	#footer h3 a {
+		color: #fff;
+	}
+
+/* Reddit Widget Styles */
+.rembeddit-content {
+
+}
+	.reddit-header {
+		display: none;
+	}
+	.reddit-voting-arrows {
+		float: left;
+		display: block;
+	}
+		.reddit-voting-arrows img {
+			border: none;
+			margin-top: 3px;
+		}
+	.reddit-entry {
+		margin-left: 28px;
+		min-height:32px;
+	}
+		#footer .reddit-entry .reddit-link-title {
+			font-size: small;
+			color: #ECD078;
+		}
+		.reddit-entry small, #footer .reddit-entry .score {
+			color: grey;
+		}
+		#footer a.reddit-comment-link {
+			color: lightgrey;
+		}
+	.reddit-link-end {
+		clear: left;
+		padding: 3px;
+	}
+
 
 /* Borrowed from Twenty Ten */
 .navigation {
