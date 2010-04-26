@@ -33,10 +33,29 @@ $match = wpbo_match_data($post->ID);
 					</div><!-- .entry-meta -->
 
 					<div class="entry-content">
+						<?php
+							if(!empty($match['server']) || !empty($match['server_ip'])) {
+						?>
 						<div class="server">
 							<h3>Server</h3>
-							<p><?php echo $match['server']; ?></p>
+						<?php
+								if(!empty($match['server_ip'])) {
+									$server = $match['server_ip'];
+									$url = 'steam://connect/' . $match['server_ip'];
+									if(!empty($match['server_pass'])) {
+										$server .= ' &mdash; Password: ' . $match['server_pass'];
+										$url .= '/' . $match['server_pass'];
+									}
+									echo '<p><a href="' . $url . '">' . $server . '</a></p>';
+								}
+								else {
+									echo '<p>' . $match['server'] . '</p>';
+								}
+						?>
 						</div>
+						<?php
+							}
+						?>
 						<h3>Type</h3>
 						<p><?php echo $match['type_nice'] ?></p>
 						<h3>Information</h3>

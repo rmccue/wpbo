@@ -101,7 +101,15 @@ function wpbo_post_callback( $post_id ) {
 	$server = $_POST['wpbo-server'];
 	$server = htmlspecialchars($server);
 	update_post_meta($post_id, 'wpbo-server', $server);
-	
+
+	$serverip = $_POST['wpbo-serverip'];
+	$serverip = htmlspecialchars($serverip);
+	update_post_meta($post_id, 'wpbo-serverip', $serverip);
+
+	$serverpass = $_POST['wpbo-serverpass'];
+	$serverpass = htmlspecialchars($serverpass);
+	update_post_meta($post_id, 'wpbo-serverpass', $serverpass);
+
 	/*$people = $_POST['wpbo-people'];
 	foreach($people as $person_id => $status) {
 
@@ -131,7 +139,8 @@ function wpbo_matchinfo_box( $object, $box ) {
 	$date = get_post_meta($object->ID, 'wpbo-date', true);
 	if(empty($date))
 		$date = time();
-	$server = get_post_meta($object->ID, 'wpbo-server', true);
+	$serverip = get_post_meta($object->ID, 'wpbo-serverip', true);
+	$serverpass = get_post_meta($object->ID, 'wpbo-serverpass', true);
 ?>
 	<table class="form-table">
 		<tr valign="top">
@@ -151,8 +160,12 @@ function wpbo_matchinfo_box( $object, $box ) {
 			<td><input type="text" name="wpbo-date" id="wpbo-date" value="<?php echo date('Y-m-d', $date) ?>" /></td>
 		</tr>
 		<tr valign="top">
-			<th scope="row"><label for="wpbo-server">Server Info</label></th>
-			<td><input type="text" name="wpbo-server" id="wpbo-server" value="<?php echo $server ?>" /></td>
+			<th scope="row"><label for="wpbo-serverip">Server IP</label></th>
+			<td><input type="text" name="wpbo-serverip" id="wpbo-serverip" value="<?php echo $serverip ?>" /></td>
+		</tr>
+		<tr valign="top">
+			<th scope="row"><label for="wpbo-serverpass">Server Password</label></th>
+			<td><input type="text" name="wpbo-serverpass" id="wpbo-serverpass" value="<?php echo $serverpass ?>" /></td>
 		</tr>
 	</table>
 <?php
@@ -334,6 +347,8 @@ function wpbo_match_data($id) {
 		'info' => get_post_meta($id, 'wpbo-info', true),
 		'players' => get_post_meta($id, 'wpbo-players', true),
 		'server' => get_post_meta($id, 'wpbo-server', true),
+		'server_ip' => get_post_meta($id, 'wpbo-serverip', true),
+		'server_pass' => get_post_meta($id, 'wpbo-serverpass', true),
 	);
 
 	if(empty($match['players']))
