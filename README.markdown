@@ -29,3 +29,11 @@ What's with the name?
 "WordPress B. Organiser" (WPBO) was originally "WordPress-Based PUG Organiser"
 (WBPO), but I could never get the letter order right. It was easier just to
 make a (crappy) backronym.
+
+
+Todo
+----
+
+- Add match time
+	- Show countdown on match page
+- Let users edit/delete signup
