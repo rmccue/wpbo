@@ -36,4 +36,4 @@ Todo
 
 - Add match time
 	- Show countdown on match page
-- Let users edit/delete signup
+- Let users delete signup
