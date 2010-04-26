@@ -139,6 +139,7 @@ function wpbo_matchinfo_box( $object, $box ) {
 	$date = get_post_meta($object->ID, 'wpbo-date', true);
 	if(empty($date))
 		$date = time();
+	$server = get_post_meta($object->ID, 'wpbo-server', true);
 	$serverip = get_post_meta($object->ID, 'wpbo-serverip', true);
 	$serverpass = get_post_meta($object->ID, 'wpbo-serverpass', true);
 ?>
@@ -158,6 +159,10 @@ function wpbo_matchinfo_box( $object, $box ) {
 		<tr valign="top">
 			<th scope="row"><label for="wpbo-date">Date</label></th>
 			<td><input type="text" name="wpbo-date" id="wpbo-date" value="<?php echo date('Y-m-d', $date) ?>" /></td>
+		</tr>
+		<tr valign="top">
+			<th scope="row"><label for="wpbo-server">Server Info</label></th>
+			<td><input type="text" name="wpbo-server" id="wpbo-server" value="<?php echo $server ?>" /> <p>Put information here until you get an IP/password. Once you have those, they will replace this text in the display.</p></td>
 		</tr>
 		<tr valign="top">
 			<th scope="row"><label for="wpbo-serverip">Server IP</label></th>
