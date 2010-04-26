@@ -103,7 +103,7 @@ $signed_up = false;
 											// We use this later.
 											$signed_up = true;
 											$name = $player['name'];
-											$class = $player['class'];
+											$class = $player['classes'];
 										}
 							?>
 								<tr class="<?php echo $player['status']; if($you) echo ' player-is-me' ?>">
@@ -168,7 +168,17 @@ $signed_up = false;
 									</tr>
 								</table>
 								<p class="submit">
+								<?php
+								if(!$signed_up) {
+								?>
 									<input type="submit" value="Sign Me Up" />
+								<?php
+								} else {
+								?>
+									<input type="submit" value="Update My Class" />
+								<?php
+								}
+								?>
 								</p>
 								<input type="hidden" name="wpbo-nonce" value="<?php echo wp_create_nonce( 'wpbo-add-form' ); ?>" />
 								<input type="hidden" name="wpbo-id" value="<?php the_ID(); ?>" />
