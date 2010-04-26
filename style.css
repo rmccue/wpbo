@@ -104,6 +104,9 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 	padding: 20px;
 	margin-bottom: 10px;
 }
+.match {
+	margin-bottom: 50px;
+}
 	.entry-title {
 		font: 20px Georgia;
 		margin: 0;
@@ -198,6 +201,9 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 		}
 			.match .players tr.confirmed:nth-child(even) {
 				background: rgba(136, 238, 68, 0.9);
+			}
+			.match .players tr.confirmed.player-is-me {
+				background: rgba(136, 238, 68, 1);
 			}
 	.match .server {
 		float: right;
