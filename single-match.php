@@ -15,6 +15,8 @@
 
 <?php
 the_post();
+global $current_user;
+get_currentuserinfo();
 $match = wpbo_match_data($post->ID);
 ?>
 
@@ -94,9 +96,12 @@ $match = wpbo_match_data($post->ID);
 								}
 								else {
 									foreach($match['players'] as $player) {
+										$you = false;
+										if(!empty($player['user']) && $player['user'] === $current_user->ID)
+											$you = true;
 							?>
-								<tr class="<?php echo $player['status'] ?>">
-									<td><?php echo $player['name'] ?></td>
+								<tr class="<?php echo $player['status']; if($you) echo ' player-is-me' ?>">
+									<td><?php echo $player['name']; if($you) echo ' (That\'s You!)'; ?></td>
 									<td><?php echo ucfirst($player['status']) ?></td>
 									<td><?php echo $player['classes'] ?></td>
 								</tr>
@@ -130,8 +135,6 @@ $match = wpbo_match_data($post->ID);
 							<?php
 							}
 							else {
-								global $current_user;
-								get_currentuserinfo();
 								$name = get_the_author_meta('wpbo_tf2user', $current_user->ID);
 								$class = get_the_author_meta('wpbo_classes', $current_user->ID);
 							?>
