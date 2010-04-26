@@ -18,6 +18,7 @@ the_post();
 global $current_user;
 get_currentuserinfo();
 $match = wpbo_match_data($post->ID);
+$signed_up = false;
 ?>
 
 				<div id="nav-above" class="navigation">
@@ -97,8 +98,10 @@ $match = wpbo_match_data($post->ID);
 								else {
 									foreach($match['players'] as $player) {
 										$you = false;
-										if(!empty($player['user']) && $player['user'] === $current_user->ID)
+										if(!empty($player['user']) && $player['user'] === $current_user->ID) {
 											$you = true;
+											$signed_up = true;
+										}
 							?>
 								<tr class="<?php echo $player['status']; if($you) echo ' player-is-me' ?>">
 									<td><?php echo $player['name']; if($you) echo ' (That\'s You!)'; ?></td>
@@ -140,16 +143,22 @@ $match = wpbo_match_data($post->ID);
 							?>
 								<p>Signed in as <?php echo $current_user->display_name ?>. <a href="<?php echo wp_logout_url() ?>">Log out</a>. Set your defaults on your <a href="<?php echo admin_url('profile.php'); ?>">profile</a>.</p>
 							<?php
+								if($signed_up) {
+							?>
+								<p>You have already signed up. To update your details, put your name the same as the one you signed up for, and change your class as needed. You cannot update your name.</p>
+							<?php
+								}
 							}
 							?>
 								<table class="form-table">
 									<tr>
 										<th scope="row"><label for="wpbo-name">Name</label></th>
-										<td><input type="text" name="wpbo-name" id="wpbo-name" value="<?php echo $name ?>" />
+										<td><input type="text" name="wpbo-name" id="wpbo-name" value="<?php echo $name ?>" /></td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="wpbo-class">Class</label></th>
 										<td><input type="text" name="wpbo-class" id="wpbo-class" value="<?php echo $class ?>" />
+										<p>e.g. "Soldier, Pyro".</p>
 									</tr>
 								</table>
 								<p class="submit">
