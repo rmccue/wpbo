@@ -100,7 +100,10 @@ $signed_up = false;
 										$you = false;
 										if(!empty($player['user']) && $player['user'] === $current_user->ID) {
 											$you = true;
+											// We use this later.
 											$signed_up = true;
+											$name = $player['name'];
+											$class = $player['class'];
 										}
 							?>
 								<tr class="<?php echo $player['status']; if($you) echo ' player-is-me' ?>">
@@ -129,9 +132,9 @@ $signed_up = false;
 							}
 						?>
 							<?php
-							$name = '';
-							$class = '';
 							if(!is_user_logged_in()) {
+								$name = '';
+								$class = '';
 							?>
 								<p>Are you a regular? <a href="<?php echo wp_login_url() ?>">Sign in</a> to pre-fill this form, or
 								<a href="<?php echo site_url('wp-login.php?action=register', 'login') ?>">create an account</a>.</p>
@@ -139,8 +142,10 @@ $signed_up = false;
 							<?php
 							}
 							else {
-								$name = get_the_author_meta('wpbo_tf2user', $current_user->ID);
-								$class = get_the_author_meta('wpbo_classes', $current_user->ID);
+								if(empty($name))
+									$name = get_the_author_meta('wpbo_tf2user', $current_user->ID);
+								if(empty($class))
+									$class = get_the_author_meta('wpbo_classes', $current_user->ID);
 							?>
 								<p>Signed in as <?php echo $current_user->display_name ?>. <a href="<?php echo wp_logout_url() ?>">Log out</a>. Set your defaults on your <a href="<?php echo admin_url('profile.php'); ?>#wpbo-section">profile</a>.</p>
 							<?php
